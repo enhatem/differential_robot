@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- The ros2_control tag represents the hardrware interface for the controller_manager -->
+    <ros2_control name="GazeboSystem" type="system"> <!--Other types exist such as "sensor" and "actuator" for interfaces to a single sensor or actuator-->
+        <hardware>
+            <!--This plugin is our hardware interface. This is a piece of code that has been installed and registered with ROS separately, 
+            that will talk to Gazebo just like a normal hardware interface talks to a motor controller.-->
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+        <!-- Here we are telling ros2_control which joints we want to control, and saying that we can control their velocities through the 
+         command_interface and get their positions and velocities back from them through a state_interface-->
+        <joint name="left_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+        <joint name="right_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">10</param>
+            </command_interface>
+            <state_interface name="position" />
+            <state_interface name="velocity" />
+        </joint>
+    </ros2_control>
+
+    <!-- This gazebo tag contains a plugin that tells gazebo to use ros2_control -->
+    <gazebo>
+        <!-- What's nice about this gazebo plugin is hat it can run it's own controller_manager, so no need to create and run our own. 
+         The controller manager is able to read our URDF, but itg still need to know where our controller YAML file is. -->
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control"> <!--The name doesn't really matter, since this is what we want to call it. What really matters is the filename -->
+            <parameters>$(find differential_robot)/config/my_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+</robot>

@@ -1,0 +1,7 @@
+# This yaml file was created to solve the slow Gazebo clock rate problem, 
+#  which also limits the clock rate at which ROS is interacting with the 
+#  simulation. The current gazebo clock rate is 10Hz, which is not fast enough 
+#  and could potentially cause wheel drifts and other problems.
+gazebo:
+  ros__parameters:
+    publish_rate: 400.0  # should be fast enough
