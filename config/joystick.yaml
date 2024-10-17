@@ -1,0 +1,28 @@
+joy_node:
+  ros__parameters:
+    device_id: 0
+    deadzone: 0.05
+    autorepeat_rate: 20.0  # in ms
+
+teleop_node:
+  ros__parameters:
+    axis_linear:
+      x: 1
+    scale_linear:  # The speed along x when we push the axis at it's limit
+      x: 0.5  # m/s
+    scale_linear_turbo:  # Speed for turbo mode
+      x: 1.0  # m/s
+    
+    # Even though in the Twist message, the rotation speed variable is called z, it is actually called yaw in the teleop_twist_joy node
+    axis_angular:
+      yaw: 0
+    scale_angular:
+      yaw: 0.5  # rad/s
+    scale_angular_turbo:
+      yaw: 1.0  # rad/s
+
+    
+    enable_button: 4
+    enable_turbo_button: 5
+
+    require_enable_button: true
