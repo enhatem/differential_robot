@@ -28,6 +28,12 @@ def generate_launch_description():
                     'use_ros2_control': LaunchConfiguration('use_ros2_control')}.items()
     )
 
+    joystick = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','joystick.launch.py'
+                )]), launch_arguments={'use_sim_time': 'true'}.items()
+    )
+
     gazebo_params_file = os.path.join(get_package_share_directory(package_name), 'config', 'gazebo_params.yaml')
 
     # Include the Gazebo launch file, provided by the gazebo_ros package
@@ -62,7 +68,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'use_ros2_control',
-            default_value='false',  # Default value, but can be overridden at runtime
+            default_value='true',  # Default value, but can be overridden at runtime
             description='Use ros2_control if true'),
         DeclareLaunchArgument(
             'world',
@@ -70,6 +76,7 @@ def generate_launch_description():
             description='SDF world file to load in Gazebo'
         ),
         rsp,
+        joystick,
         gazebo,
         spawn_entity,
         diff_drive_spawner,
