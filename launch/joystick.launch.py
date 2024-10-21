@@ -24,7 +24,8 @@ def generate_launch_description():
         executable='teleop_node',
         name="teleop_node",  # The default node name for teleop_node executable is teleop_twist_joy_node. Keeping it as-is is not a problem but it can be a bit confusing so we changed it to teleop_node.
         parameters=[joy_params, {'use_sim_time': use_sim_time}],  # passing same params file as the one passed for the joy_node
-        remappings=[('/cmd_vel', '/diff_cont/cmd_vel_unstamped')]
+        # remappings=[('/cmd_vel', '/diff_cont/cmd_vel_unstamped')]
+        remappings=[('/cmd_vel', '/cmd_vel_joy')]  # for the twist_mux node
     )
 
     # twist_stamper = Node(
