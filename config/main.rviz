@@ -10,6 +10,7 @@ Panels:
         - /RobotModel1
         - /LaserScan1
         - /Camera1
+        - /Camera1/Visibility1
       Splitter Ratio: 0.5058823823928833
     Tree Height: 448
   - Class: rviz_common/Selection
@@ -56,6 +57,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
         camera_link:
@@ -82,6 +85,8 @@ Visualization Manager:
       Tree:
         odom:
           base_link:
+            base_footprint:
+              {}
             chassis:
               camera_link:
                 camera_link_optical:
@@ -114,6 +119,10 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -210,8 +219,8 @@ Visualization Manager:
       Visibility:
         Grid: true
         LaserScan: true
-        RobotModel: true
-        TF: true
+        RobotModel: false
+        TF: false
         Value: true
       Zoom Factor: 1
   Enabled: true
@@ -260,25 +269,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 5.726479530334473
+      Distance: 15.339345932006836
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 2.0740010738372803
-        Y: 0.39562129974365234
-        Z: -0.0033814311027526855
+        X: 3.478820323944092
+        Y: -0.8352283239364624
+        Z: 1.6655702590942383
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7203980088233948
+      Pitch: 0.4103982150554657
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.5385804176330566
+      Yaw: 3.5935816764831543
     Saved: ~
 Window Geometry:
   Camera:
